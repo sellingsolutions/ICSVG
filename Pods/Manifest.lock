@@ -1,0 +1,17 @@
+PODS:
+  - KIF (3.7.4):
+    - KIF/Core (= 3.7.4)
+  - KIF/Core (3.7.4)
+  - SwiftLint (0.26.0)
+
+DEPENDENCIES:
+  - KIF
+  - SwiftLint
+
+SPEC CHECKSUMS:
+  KIF: f3d01c109ee9d1cfe6b0f2bb2aa278e807e971e2
+  SwiftLint: f6b83e8d95ee1e91e11932d843af4fdcbf3fc764
+
+PODFILE CHECKSUM: 29ac38b74d5b2565d1192713653986e5724e10e5
+
+COCOAPODS: 1.4.0

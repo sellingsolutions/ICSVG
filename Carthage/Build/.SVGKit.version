@@ -1,0 +1,24 @@
+{
+  "Mac" : [
+    {
+      "name" : "SVGKit",
+      "hash" : "6edf08ee5164fdc857aa3bca6ae800263ce7d7d4698d51ff66bfc37ababc5ed3"
+    }
+  ],
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+    {
+      "name" : "SVGKit",
+      "hash" : "9c5bd38980cc1a33c6ae65df106657baf870fb63897e424a237006aba45ebb46"
+    }
+  ],
+  "commitish" : "cc0d7edf67af2bd10a6a895f1b4982b22a8b172a",
+  "iOS" : [
+    {
+      "name" : "SVGKit",
+      "hash" : "ea4d74b631ddb359d452cd75b53ca19c07f9cda23632b16709e5afc85e18619b"
+    }
+  ]
+}

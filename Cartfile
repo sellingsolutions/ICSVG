@@ -1,0 +1,3 @@
+# Why on earth why I would use Carthage and Cocoapods at the same time?
+# SVGKit won't build as a pod, that's why 
+github "SVGKit/SVGKit" "3.x"

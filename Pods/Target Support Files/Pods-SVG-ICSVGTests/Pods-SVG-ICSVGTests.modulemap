@@ -1,0 +1,6 @@
+framework module Pods_SVG_ICSVGTests {
+  umbrella header "Pods-SVG-ICSVGTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

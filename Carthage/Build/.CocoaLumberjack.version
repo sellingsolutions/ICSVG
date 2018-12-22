@@ -1,0 +1,43 @@
+{
+  "Mac" : [
+    {
+      "name" : "CocoaLumberjackSwift",
+      "hash" : "f3d245db566113be1e2308ca5ddedfc6e5ec9d1efe0ce3bae50a277aa86b6ab2"
+    },
+    {
+      "name" : "CocoaLumberjack",
+      "hash" : "7a6ae76885d2dafca27683c111cd1e6404847c5ea95bd19e870fcc4006f22940"
+    }
+  ],
+  "watchOS" : [
+    {
+      "name" : "CocoaLumberjackSwift",
+      "hash" : "beeb0791da8502b0f49429233c442265a4d7839d3ebfcd54997370b820a58a6c"
+    },
+    {
+      "name" : "CocoaLumberjack",
+      "hash" : "c82963774d5f21e162495990240225f7c5404db012cb36c35b7a955b1cb3465b"
+    }
+  ],
+  "tvOS" : [
+    {
+      "name" : "CocoaLumberjackSwift",
+      "hash" : "49df4d6505648f87375836a02b9dce1f7cf7b132b72f78be100ac93ad82b0d9e"
+    },
+    {
+      "name" : "CocoaLumberjack",
+      "hash" : "f19fe755d7cff0cdfb91dbca9d95adb634da4030545192d5b490b0577165f8ea"
+    }
+  ],
+  "commitish" : "3.4.2",
+  "iOS" : [
+    {
+      "name" : "CocoaLumberjackSwift",
+      "hash" : "8747ab94fec7ba68d9851850ae545399d72278eb92cb3d204a7281f167b1ced0"
+    },
+    {
+      "name" : "CocoaLumberjack",
+      "hash" : "428ccc19ea48be510fd55b92e26bc18fae2433cffe7af28cf0571dfd6f91275c"
+    }
+  ]
+}
