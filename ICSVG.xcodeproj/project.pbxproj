@@ -21,13 +21,14 @@
 		80BFA0C421D0447A00931D2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0C021D0447A00931D2B /* ViewController.swift */; };
 		80BFA0C521D0447A00931D2B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0C121D0447A00931D2B /* DetailViewController.swift */; };
 		80BFA0C621D0447A00931D2B /* mikroskopet_sodra.json in Resources */ = {isa = PBXBuildFile; fileRef = 80BFA0C221D0447A00931D2B /* mikroskopet_sodra.json */; };
-		80BFA0C921D04C9F00931D2B /* ICSVGScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0C821D04C9F00931D2B /* ICSVGScrollViewDelegate.swift */; };
-		80BFA0CB21D129FF00931D2B /* ICSVGMarchingAntsAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0CA21D129FF00931D2B /* ICSVGMarchingAntsAnimation.swift */; };
 		80BFA0CD21D1306E00931D2B /* ICSVGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0CC21D1306E00931D2B /* ICSVGViewController.swift */; };
 		80BFA0CF21D132FE00931D2B /* ICSVGDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0CE21D132FE00931D2B /* ICSVGDocument.swift */; };
-		80BFA0D121D13E5E00931D2B /* ICSVGViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0D021D13E5E00931D2B /* ICSVGViewControllerDelegate.swift */; };
 		80BFA0D321D6C78100931D2B /* ICSVGLayerSelectionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0D221D6C78100931D2B /* ICSVGLayerSelectionStyle.swift */; };
 		80BFA0D521D6C81200931D2B /* ICSVGViewControllerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0D421D6C81200931D2B /* ICSVGViewControllerConfig.swift */; };
+		80BFA0DE21D6E3AF00931D2B /* CAShapeLayer+MarchingAntsAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0DC21D6E3AF00931D2B /* CAShapeLayer+MarchingAntsAnimation.swift */; };
+		80BFA0DF21D6E3AF00931D2B /* CAShapeLayer+StrokeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0DD21D6E3AF00931D2B /* CAShapeLayer+StrokeAnimation.swift */; };
+		80BFA0E321D6E40A00931D2B /* ICSVGViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0E121D6E40A00931D2B /* ICSVGViewControllerDelegate.swift */; };
+		80BFA0E421D6E40A00931D2B /* ICSVGScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0E221D6E40A00931D2B /* ICSVGScrollViewDelegate.swift */; };
 		80D34BFB21CCEDCD00FC7E6D /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D34BFA21CCEDCD00FC7E6D /* CoreText.framework */; };
 		80D34BFD21CCEDD300FC7E6D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D34BFC21CCEDD300FC7E6D /* CoreImage.framework */; };
 		80D34BFF21CCEDE900FC7E6D /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D34BFE21CCEDE900FC7E6D /* libxml2.tbd */; };
@@ -79,13 +80,14 @@
 		80BFA0C021D0447A00931D2B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		80BFA0C121D0447A00931D2B /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		80BFA0C221D0447A00931D2B /* mikroskopet_sodra.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mikroskopet_sodra.json; sourceTree = "<group>"; };
-		80BFA0C821D04C9F00931D2B /* ICSVGScrollViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSVGScrollViewDelegate.swift; sourceTree = "<group>"; };
-		80BFA0CA21D129FF00931D2B /* ICSVGMarchingAntsAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSVGMarchingAntsAnimation.swift; sourceTree = "<group>"; };
 		80BFA0CC21D1306E00931D2B /* ICSVGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSVGViewController.swift; sourceTree = "<group>"; };
 		80BFA0CE21D132FE00931D2B /* ICSVGDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSVGDocument.swift; sourceTree = "<group>"; };
-		80BFA0D021D13E5E00931D2B /* ICSVGViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSVGViewControllerDelegate.swift; sourceTree = "<group>"; };
 		80BFA0D221D6C78100931D2B /* ICSVGLayerSelectionStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSVGLayerSelectionStyle.swift; sourceTree = "<group>"; };
 		80BFA0D421D6C81200931D2B /* ICSVGViewControllerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSVGViewControllerConfig.swift; sourceTree = "<group>"; };
+		80BFA0DC21D6E3AF00931D2B /* CAShapeLayer+MarchingAntsAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAShapeLayer+MarchingAntsAnimation.swift"; sourceTree = "<group>"; };
+		80BFA0DD21D6E3AF00931D2B /* CAShapeLayer+StrokeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAShapeLayer+StrokeAnimation.swift"; sourceTree = "<group>"; };
+		80BFA0E121D6E40A00931D2B /* ICSVGViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICSVGViewControllerDelegate.swift; sourceTree = "<group>"; };
+		80BFA0E221D6E40A00931D2B /* ICSVGScrollViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICSVGScrollViewDelegate.swift; sourceTree = "<group>"; };
 		80D34BFA21CCEDCD00FC7E6D /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		80D34BFC21CCEDD300FC7E6D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		80D34BFE21CCEDE900FC7E6D /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
@@ -187,15 +189,14 @@
 		80BFA0BD21D0440D00931D2B /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				80BFA0B421CFE6CA00931D2B /* ICSVGTextLayer.swift */,
 				80BFA0B821D0060E00931D2B /* ICSVGScrollView.swift */,
-				80BFA0C821D04C9F00931D2B /* ICSVGScrollViewDelegate.swift */,
-				80BFA0CA21D129FF00931D2B /* ICSVGMarchingAntsAnimation.swift */,
 				80BFA0CC21D1306E00931D2B /* ICSVGViewController.swift */,
+				80BFA0B421CFE6CA00931D2B /* ICSVGTextLayer.swift */,
 				80BFA0CE21D132FE00931D2B /* ICSVGDocument.swift */,
-				80BFA0D021D13E5E00931D2B /* ICSVGViewControllerDelegate.swift */,
 				80BFA0D221D6C78100931D2B /* ICSVGLayerSelectionStyle.swift */,
 				80BFA0D421D6C81200931D2B /* ICSVGViewControllerConfig.swift */,
+				80BFA0E021D6E40A00931D2B /* Delegates */,
+				80BFA0DB21D6E3AF00931D2B /* Extensions */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -213,6 +214,24 @@
 				80BFA0C221D0447A00931D2B /* mikroskopet_sodra.json */,
 			);
 			path = Demo;
+			sourceTree = "<group>";
+		};
+		80BFA0DB21D6E3AF00931D2B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				80BFA0DC21D6E3AF00931D2B /* CAShapeLayer+MarchingAntsAnimation.swift */,
+				80BFA0DD21D6E3AF00931D2B /* CAShapeLayer+StrokeAnimation.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		80BFA0E021D6E40A00931D2B /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				80BFA0E121D6E40A00931D2B /* ICSVGViewControllerDelegate.swift */,
+				80BFA0E221D6E40A00931D2B /* ICSVGScrollViewDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		A9AF7C7C43DED3275132201B /* Pods */ = {
@@ -512,17 +531,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				80BFA0C421D0447A00931D2B /* ViewController.swift in Sources */,
+				80BFA0DE21D6E3AF00931D2B /* CAShapeLayer+MarchingAntsAnimation.swift in Sources */,
 				80BFA0CF21D132FE00931D2B /* ICSVGDocument.swift in Sources */,
 				80BFA0D321D6C78100931D2B /* ICSVGLayerSelectionStyle.swift in Sources */,
 				80BFA0D521D6C81200931D2B /* ICSVGViewControllerConfig.swift in Sources */,
-				80BFA0D121D13E5E00931D2B /* ICSVGViewControllerDelegate.swift in Sources */,
+				80BFA0DF21D6E3AF00931D2B /* CAShapeLayer+StrokeAnimation.swift in Sources */,
 				80BFA0B521CFE6CA00931D2B /* ICSVGTextLayer.swift in Sources */,
+				80BFA0E321D6E40A00931D2B /* ICSVGViewControllerDelegate.swift in Sources */,
 				80BFA0B921D0060E00931D2B /* ICSVGScrollView.swift in Sources */,
 				802A269C21CBE28200C81652 /* AppDelegate.swift in Sources */,
-				80BFA0CB21D129FF00931D2B /* ICSVGMarchingAntsAnimation.swift in Sources */,
 				80BFA0C521D0447A00931D2B /* DetailViewController.swift in Sources */,
-				80BFA0C921D04C9F00931D2B /* ICSVGScrollViewDelegate.swift in Sources */,
 				80BFA0CD21D1306E00931D2B /* ICSVGViewController.swift in Sources */,
+				80BFA0E421D6E40A00931D2B /* ICSVGScrollViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,7 +13,7 @@ class ICSVGViewController: UIViewController {
     
     private var selectedLayer: CAShapeLayer?
     
-    private var viewFrame = CGRect.zero
+    private var viewFrame: CGRect!
     
     var document: ICSVGDocument!
     var scrollView: ICSVGScrollView!
@@ -21,10 +21,9 @@ class ICSVGViewController: UIViewController {
     var config: ICSVGViewControllerConfig!
 
     convenience init() {
-        let bounds = UIScreen.main.bounds
-        let frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
-
-        self.init(frame: frame, filePath: nil, config: ICSVGViewControllerConfig.default)
+        self.init(frame: UIScreen.main.bounds,
+                  filePath: nil,
+                  config: ICSVGViewControllerConfig.default)
     }
     
     init(frame: CGRect, filePath: String?, config: ICSVGViewControllerConfig = .default) {
@@ -48,6 +47,22 @@ class ICSVGViewController: UIViewController {
         self.scrollView.svgDelegate = self
         
         view.addSubview(scrollView)
+        
+        runLoadAnimationOn(document.caLayerTree)
+    }
+    
+    private func runLoadAnimationOn(_ layer: CALayer) {
+        
+        let shape = layer as? CAShapeLayer
+        shape?.runStrokeAnimation()
+        
+        guard let sublayers = layer.sublayers else {
+            return
+        }
+        
+        for sublayer in sublayers {
+            runLoadAnimationOn(sublayer)
+        }
     }
 }
 extension ICSVGViewController: ICSVGScrollViewDelegate {
@@ -67,7 +82,6 @@ extension ICSVGViewController: ICSVGScrollViewDelegate {
     }
     
     func addSelectionStyle(_ selectionStyle: ICSVGLayerSelectionStyle, to layer: CAShapeLayer) {
-
         
         selectedLayer?.lineDashPattern = nil
         selectedLayer?.removeAllAnimations()
@@ -80,7 +94,7 @@ extension ICSVGViewController: ICSVGScrollViewDelegate {
             
             switch selectionStyle {
             case .marchingAnts:
-                ICSVGMarchingAntsAnimation.marchOn(shapeLayer: layer)
+                layer.runMarchingAntsAnimation()
             default:
                 break
             }
