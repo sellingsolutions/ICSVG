@@ -59,7 +59,7 @@ extension CAShapeLayer {
             (line1.b.y - line1.a.y) *
             (line2.b.x - line2.a.x)
         if distance == 0 {
-            print("no intersection, parallel lines")
+            //print("no intersection, parallel lines")
             return nil
         }
         
@@ -74,11 +74,11 @@ extension CAShapeLayer {
             (line1.b.x - line1.a.x)) / distance
         
         if (u < 0.0 || u > 1.0) {
-            print("intersection not inside line1")
+            //print("intersection not inside line1")
             return nil
         }
         if (v < 0.0 || v > 1.0) {
-            print("intersection not inside line2")
+            //print("intersection not inside line2")
             return nil
         }
         

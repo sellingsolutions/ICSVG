@@ -13,6 +13,10 @@
 		800BFE7121E16163007DDADD /* ICSVGTwoFingerGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BFE7021E16163007DDADD /* ICSVGTwoFingerGesture.swift */; };
 		800BFE7321E179AD007DDADD /* ICSVGTwoFingerGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BFE7221E179AD007DDADD /* ICSVGTwoFingerGestureDelegate.swift */; };
 		800BFE7521E2C18F007DDADD /* CAShapeLayer+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BFE7421E2C18F007DDADD /* CAShapeLayer+Rotation.swift */; };
+		800BFE7B21E2E943007DDADD /* ICSVGAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BFE7A21E2E942007DDADD /* ICSVGAnnotation.swift */; };
+		800BFE7D21E2E960007DDADD /* ICSVGCircleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BFE7C21E2E960007DDADD /* ICSVGCircleAnnotation.swift */; };
+		800BFE7F21E3BE9D007DDADD /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BFE7E21E3BE9D007DDADD /* CGRect+Center.swift */; };
+		800BFE8221E3D546007DDADD /* ICSVGAnnotationShapeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BFE8121E3D546007DDADD /* ICSVGAnnotationShapeType.swift */; };
 		802A269C21CBE28200C81652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A269B21CBE28200C81652 /* AppDelegate.swift */; };
 		802A26A121CBE28200C81652 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802A269F21CBE28200C81652 /* Main.storyboard */; };
 		802A26A321CBE28300C81652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 802A26A221CBE28300C81652 /* Assets.xcassets */; };
@@ -72,6 +76,10 @@
 		800BFE7021E16163007DDADD /* ICSVGTwoFingerGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSVGTwoFingerGesture.swift; sourceTree = "<group>"; };
 		800BFE7221E179AD007DDADD /* ICSVGTwoFingerGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSVGTwoFingerGestureDelegate.swift; sourceTree = "<group>"; };
 		800BFE7421E2C18F007DDADD /* CAShapeLayer+Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAShapeLayer+Rotation.swift"; sourceTree = "<group>"; };
+		800BFE7A21E2E942007DDADD /* ICSVGAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICSVGAnnotation.swift; sourceTree = "<group>"; };
+		800BFE7C21E2E960007DDADD /* ICSVGCircleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSVGCircleAnnotation.swift; sourceTree = "<group>"; };
+		800BFE7E21E3BE9D007DDADD /* CGRect+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Center.swift"; sourceTree = "<group>"; };
+		800BFE8121E3D546007DDADD /* ICSVGAnnotationShapeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSVGAnnotationShapeType.swift; sourceTree = "<group>"; };
 		802A269821CBE28200C81652 /* ICSVG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ICSVG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		802A269B21CBE28200C81652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		802A26A021CBE28200C81652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -149,6 +157,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		800BFE7921E2E942007DDADD /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				800BFE7A21E2E942007DDADD /* ICSVGAnnotation.swift */,
+				800BFE7C21E2E960007DDADD /* ICSVGCircleAnnotation.swift */,
+				800BFE8121E3D546007DDADD /* ICSVGAnnotationShapeType.swift */,
+			);
+			path = Annotations;
+			sourceTree = "<group>";
+		};
 		802A268F21CBE28100C81652 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +228,7 @@
 				80BFA0D221D6C78100931D2B /* ICSVGLayerSelectionStyle.swift */,
 				80BFA0D421D6C81200931D2B /* ICSVGViewControllerConfig.swift */,
 				800BFE7021E16163007DDADD /* ICSVGTwoFingerGesture.swift */,
+				800BFE7921E2E942007DDADD /* Annotations */,
 				80BFA0E021D6E40A00931D2B /* Delegates */,
 				80BFA0DB21D6E3AF00931D2B /* Extensions */,
 			);
@@ -241,6 +260,7 @@
 				80BFA0E521D7ED9B00931D2B /* CALayer+SVGElementID.swift */,
 				80BFA0E721D9EAC200931D2B /* CGPath+Points.swift */,
 				800BFE7421E2C18F007DDADD /* CAShapeLayer+Rotation.swift */,
+				800BFE7E21E3BE9D007DDADD /* CGRect+Center.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -551,11 +571,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				800BFE7F21E3BE9D007DDADD /* CGRect+Center.swift in Sources */,
 				80BFA0E621D7ED9B00931D2B /* CALayer+SVGElementID.swift in Sources */,
 				80CA3CD021E0856800B7B895 /* CAShapeLayer+PathWidth.swift in Sources */,
 				80BFA0C421D0447A00931D2B /* ViewController.swift in Sources */,
+				800BFE7D21E2E960007DDADD /* ICSVGCircleAnnotation.swift in Sources */,
 				80BFA0DE21D6E3AF00931D2B /* CAShapeLayer+MarchingAntsAnimation.swift in Sources */,
 				80BFA0CF21D132FE00931D2B /* ICSVGDocument.swift in Sources */,
+				800BFE7B21E2E943007DDADD /* ICSVGAnnotation.swift in Sources */,
 				800BFE7321E179AD007DDADD /* ICSVGTwoFingerGestureDelegate.swift in Sources */,
 				80BFA0D321D6C78100931D2B /* ICSVGLayerSelectionStyle.swift in Sources */,
 				80BFA0D521D6C81200931D2B /* ICSVGViewControllerConfig.swift in Sources */,
@@ -567,6 +590,7 @@
 				802A269C21CBE28200C81652 /* AppDelegate.swift in Sources */,
 				80BFA0C521D0447A00931D2B /* DetailViewController.swift in Sources */,
 				800BFE7521E2C18F007DDADD /* CAShapeLayer+Rotation.swift in Sources */,
+				800BFE8221E3D546007DDADD /* ICSVGAnnotationShapeType.swift in Sources */,
 				80BFA0E821D9EAC200931D2B /* CGPath+Points.swift in Sources */,
 				80BFA0CD21D1306E00931D2B /* ICSVGViewController.swift in Sources */,
 				800BFE6F21E10DCB007DDADD /* CAShapeLayer+TextLayer.swift in Sources */,

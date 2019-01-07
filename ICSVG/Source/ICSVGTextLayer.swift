@@ -12,4 +12,20 @@ class ICSVGTextLayer: CATextLayer {
     override func hitTest(_ p: CGPoint) -> CALayer? {
         return nil
     }
+    
+    class func textLayer(with rect: CGRect) -> ICSVGTextLayer {
+        let textLayer = ICSVGTextLayer()
+        
+        textLayer.fontSize = 12
+        textLayer.frame = rect
+        textLayer.alignmentMode = .center
+        textLayer.truncationMode = .end
+        textLayer.foregroundColor = UIColor.black.cgColor
+        
+        return textLayer
+    }
+    
+    override func draw(in ctx: CGContext) {
+        super.draw(in: ctx)
+    }
 }

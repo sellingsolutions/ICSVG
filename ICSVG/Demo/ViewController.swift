@@ -14,41 +14,7 @@ class ViewController: ICSVGViewController {
     private var projectName = ""
     private var spaces = [[String: Any]]()
     
-    private var lastTappedLayer: CALayer?
-    private var moveToggle = false
-
-    private func loadIFCJSON() {
-        do {
-            if let file = Bundle.main.url(forResource: "mikroskopet_sodra", withExtension: "json") {
-                let data = try Data(contentsOf: file)
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                if let object = json as? [String: Any],
-                    let stories = object["Floors"] as? [[String: Any]] {
-                    self.ifcDS = object
-                    
-                    let project = object["Project"] as? [String: Any]
-                    projectName = project?["Name"] as? String ?? "<Project Name>"
-                    
-                    for var story in stories {
-                        if let _spaces = story["Spaces"] as? [[String: Any]] {
-                            for space in _spaces {
-                                var updatedSpace = space
-                                updatedSpace["storyName"] = story["Name"]
-                                spaces.append(updatedSpace)
-                            }
-                            // ifcGlobalId
-                            //print(_spaces.first?["AltExternalId"] as? String ?? "")
-                        }
-                    }
-
-                }
-            } else {
-                print("no file")
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
+    var contentSize = CGSize.zero
     
     @objc
     func rotate() {
@@ -58,12 +24,10 @@ class ViewController: ICSVGViewController {
     @objc
     func toggleMove() {
         scrollView.toggleTranslation()
-        navigationController?.navigationBar.backgroundColor = scrollView.translationEnabled ? UIColor.red : UIColor.clear
+        let bgColor = scrollView.translationEnabled ? UIColor.red : UIColor.clear
+        navigationController?.navigationBar.backgroundColor = bgColor
         
     }
-    
-    // MARK: - ICSVGTwoFingerGestureDelegate
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,8 +53,107 @@ class ViewController: ICSVGViewController {
         for shape in shapes {
             addTextLayerTo(shape)
         }
+        
+        contentSize = scrollView.contentView.frame.size
+        
     }
     
+}
+// MARK: - ICSVGViewControllerDelegate
+extension ViewController: ICSVGViewControllerDelegate {
+    func didTap(on layer: CALayer?, at scrollViewPoint: CGPoint, with svgElementID: String?) {
+        
+        guard let parentSvgID = layer?.superlayer?.svgElementID else {
+            return
+        }
+        
+        let spaceID = parentSvgID.replacingOccurrences(of: "product-", with: "")
+        
+        guard let space = space(with: spaceID),
+            let spaceName = space["RoomTag"] as? String,
+            let storyName = space["storyName"] as? String else {
+            return
+        }
+        
+        navigationItem.title = "\(storyName) - \(spaceName)"
+        
+        let detailVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
+        detailVC?.preferredContentSize = CGSize(width: 320, height: 120)
+        detailVC?.modalPresentationStyle = .popover
+        
+        detailVC?.space = space
+        
+        let contentViewPoint = scrollView.convert(scrollViewPoint, to: scrollView.contentView)
+        detailVC?.point = contentViewPoint
+        detailVC?.delegate = self
+        
+        let ppc = detailVC?.popoverPresentationController
+        
+        ppc?.permittedArrowDirections = .any
+        //ppc?.delegate = self
+        ppc?.sourceRect = CGRect(x: scrollViewPoint.x,
+                                 y: scrollViewPoint.y,
+                                 width: 0,
+                                 height: 0)
+        ppc?.sourceView = scrollView
+        
+        present(detailVC!, animated: true, completion: nil)
+    }    
+}
+extension ViewController: DetailViewControllerDelegate {
+    
+    func didSave(at position: CGPoint, with type: ICSVGAnnotationShapeType) {
+        dismiss(animated: true, completion: nil)
+        
+        addAnnotation(at: position)
+    }
+    
+    func addAnnotation(at point: CGPoint) {
+        let frame = CGRect(origin: point, size: CGSize(width: 22, height: 22))
+        let annotation = ICSVGCircleAnnotation(frame: frame,
+                                               text: "",
+                                               contentSize: contentSize)
+        
+        scrollView.contentView?.addSubview(annotation)
+    }
+}
+// MARK: - LOADING IFC JSON FILE
+extension ViewController {
+    private func loadIFCJSON() {
+        do {
+            if let file = Bundle.main.url(forResource: "mikroskopet_sodra", withExtension: "json") {
+                let data = try Data(contentsOf: file)
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                if let object = json as? [String: Any],
+                    let stories = object["Floors"] as? [[String: Any]] {
+                    self.ifcDS = object
+                    
+                    let project = object["Project"] as? [String: Any]
+                    projectName = project?["Name"] as? String ?? "<Project Name>"
+                    
+                    for var story in stories {
+                        if let _spaces = story["Spaces"] as? [[String: Any]] {
+                            for space in _spaces {
+                                var updatedSpace = space
+                                updatedSpace["storyName"] = story["Name"]
+                                spaces.append(updatedSpace)
+                            }
+                            // ifcGlobalId
+                            //print(_spaces.first?["AltExternalId"] as? String ?? "")
+                        }
+                    }
+                    
+                }
+            } else {
+                print("no file")
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+}
+// MARK: - ADDING SPACE NAMES AS TEXT LAYERS
+extension ViewController {
     func findShapes (_ layer: CALayer) -> [CAShapeLayer] {
         var newShapes = [CAShapeLayer]()
         
@@ -133,42 +196,5 @@ class ViewController: ICSVGViewController {
             }
         }
         return matchingSpace
-    }
-    
-}
-extension ViewController: ICSVGViewControllerDelegate {
-    func didTap(on layer: CALayer?, at scrollViewPoint: CGPoint, with svgElementID: String?) {
-        
-        guard let parentSvgID = layer?.superlayer?.svgElementID else {
-            return
-        }
-        
-        let spaceID = parentSvgID.replacingOccurrences(of: "product-", with: "")
-        
-        guard let space = space(with: spaceID),
-            let spaceName = space["RoomTag"] as? String,
-            let storyName = space["storyName"] as? String else {
-            return
-        }
-        
-        navigationItem.title = "\(storyName) - \(spaceName)"
-        
-        let detailVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
-        detailVC?.preferredContentSize = CGSize(width: 320, height: 120)
-        detailVC?.modalPresentationStyle = .popover
-        
-        detailVC?.space = space
-        
-        let ppc = detailVC?.popoverPresentationController
-        
-        ppc?.permittedArrowDirections = .any
-        //ppc?.delegate = self
-        ppc?.sourceRect = CGRect(x: scrollViewPoint.x,
-                                 y: scrollViewPoint.y,
-                                 width: 0,
-                                 height: 0)
-        ppc?.sourceView = scrollView
-        
-        present(detailVC!, animated: true, completion: nil)
     }
 }

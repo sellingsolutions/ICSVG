@@ -7,11 +7,16 @@
 //
 
 import UIKit
-
+protocol DetailViewControllerDelegate: class {
+    func didSave(at position: CGPoint, with type: ICSVGAnnotationShapeType)
+}
 class DetailViewController: UIViewController {
 
+    weak var delegate: DetailViewControllerDelegate?
+    
     @IBOutlet var tableView: UITableView!
     
+    var point: CGPoint = CGPoint.zero
     var space: [String: Any]?
     var keyNames = ["AltExternalId", "RoomTag"]
     
@@ -47,5 +52,10 @@ extension DetailViewController: UITableViewDataSource {
         cell.detailTextLabel?.text = "\(value ?? "")"
         
         return cell
+    }
+}
+extension DetailViewController : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didSave(at: point, with: .circle)
     }
 }

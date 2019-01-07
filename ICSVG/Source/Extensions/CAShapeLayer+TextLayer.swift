@@ -26,19 +26,13 @@ extension CAShapeLayer {
         // Subtract 20% of the layer width to make room for the left and right padding
         let textLayerWidth = width * 0.80
         
-        let textLayer = ICSVGTextLayer()
+        let textRect = CGRect(x: textOriginX,
+                              y: p1.y,
+                              width: textLayerWidth,
+                              height: 44)
         
+        let textLayer = ICSVGTextLayer.textLayer(with: textRect)
         textLayer.string = text
-        textLayer.fontSize = 14
-        
-        textLayer.frame = CGRect(x: textOriginX,
-                            y: p1.y,
-                            width: textLayerWidth,
-                            height: 44)
-        
-        textLayer.alignmentMode = .center
-        textLayer.truncationMode = .end
-        textLayer.foregroundColor = UIColor.black.cgColor
         
         addSublayer(textLayer)
     }

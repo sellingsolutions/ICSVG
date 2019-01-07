@@ -169,6 +169,18 @@ extension ICSVGScrollView: UIScrollViewDelegate {
         disableTextLayerAnimations(in: contentLayerTreeRoot, andUpdateToScale: newScale)
         
         CATransaction.commit()
+        
+        let annotations = _contentView.subviews.filter({ v -> Bool in
+            v is ICSVGCircleAnnotation
+        })
+        
+        for a in annotations {
+            if let circle = a as? ICSVGCircleAnnotation {
+                circle.resize(zoomScale: newScale)
+                disableTextLayerAnimations(in: circle.circle, andUpdateToScale: newScale)
+
+            }
+        }
     }
     
     func disableTextLayerAnimations(in layer: CALayer, andUpdateToScale newScale: CGFloat) {
