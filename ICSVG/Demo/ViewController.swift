@@ -8,26 +8,15 @@
 
 import UIKit
 
-
-/*
- 
- Cool stuff:
- 1. marching ants effect using lineDashPhase ✅
- 2. aligning the space name TextLayers with the layer path
- 3. adding the project, site, building and story names as a header
- 4. some how detect the rotation of the svg, the rooms will only be rectangles.. the angle between the scrollview and the layer cgpath should be 0
- 5.
- */
-
 class ViewController: ICSVGViewController {
     
     private var ifcDS: [String: Any]?
+    private var projectName = ""
     private var spaces = [[String: Any]]()
     
     private var lastTappedLayer: CALayer?
+    private var moveToggle = false
 
-    
-    
     private func loadIFCJSON() {
         do {
             if let file = Bundle.main.url(forResource: "mikroskopet_sodra", withExtension: "json") {
@@ -37,9 +26,16 @@ class ViewController: ICSVGViewController {
                     let stories = object["Floors"] as? [[String: Any]] {
                     self.ifcDS = object
                     
+                    let project = object["Project"] as? [String: Any]
+                    projectName = project?["Name"] as? String ?? "<Project Name>"
+                    
                     for var story in stories {
                         if let _spaces = story["Spaces"] as? [[String: Any]] {
-                            spaces.append(contentsOf: _spaces)
+                            for space in _spaces {
+                                var updatedSpace = space
+                                updatedSpace["storyName"] = story["Name"]
+                                spaces.append(updatedSpace)
+                            }
                             // ifcGlobalId
                             //print(_spaces.first?["AltExternalId"] as? String ?? "")
                         }
@@ -54,49 +50,78 @@ class ViewController: ICSVGViewController {
         }
     }
     
-
+    @objc
+    func rotate() {
+        scrollView.rotate(.pi / 4.0)
+    }
+    
+    @objc
+    func toggleMove() {
+        scrollView.toggleTranslation()
+        navigationController?.navigationBar.backgroundColor = scrollView.translationEnabled ? UIColor.red : UIColor.clear
+        
+    }
+    
+    // MARK: - ICSVGTwoFingerGestureDelegate
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        delegate = self
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Rotate 45°",
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(rotate))
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Move",
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(toggleMove))
+
         loadIFCJSON()
         
         // Crashes unless you specify an id inside of the root tag <svg id=".."
         //let tree = svgDocument.dictionaryOfLayers()
         
-        decorateLayer(scrollView.caLayerTree)
-        
+        let shapes = findShapes(scrollView.caLayerTree)
+        for shape in shapes {
+            addTextLayerTo(shape)
+        }
     }
     
-    func decorateLayer(_ layer: CALayer) {
-        guard let sublayers = layer.sublayers else {
-            return
+    func findShapes (_ layer: CALayer) -> [CAShapeLayer] {
+        var newShapes = [CAShapeLayer]()
+        
+        if let shape = layer as? CAShapeLayer {
+            newShapes.append(shape)
         }
         
-        if let svgID = layer.value(forKey: kSVGElementIdentifier) as? String {
-            let ifcGuid = svgID.replacingOccurrences(of: "product-", with: "")
-            if let _space = space(with: ifcGuid), let name = _space["RoomTag"] as? String {
-                let superlayerWidth = layer.frame.size.width
-                
-                let text = ICSVGTextLayer()
-                text.string = name
-                text.fontSize = 16
-                text.frame = CGRect(x: 0,
-                                    y: layer.frame.size.height / 2,
-                                    width: superlayerWidth,
-                                    height: 44)
-
-                text.alignmentMode = CATextLayerAlignmentMode.center;
-                text.foregroundColor = UIColor.black.cgColor
-                
-
-                layer.addSublayer(text)
-            }
+        guard let sublayers = layer.sublayers else {
+            return newShapes
         }
         
         for sublayer in sublayers {
-            decorateLayer(sublayer)
+            let shapes = findShapes(sublayer)
+            newShapes.append(contentsOf: shapes)
         }
+        
+        return newShapes
+    }
+    
+    func addTextLayerTo(_ shape: CAShapeLayer) {
+        
+        var spaceName = ""
+        
+        if let svgID = shape.superlayer?.svgElementID {
+            let ifcGuid = svgID.replacingOccurrences(of: "product-", with: "")
+            if let _space = space(with: ifcGuid), let name = _space["RoomTag"] as? String {
+                spaceName = name
+            }
+        }
+        
+        shape.addTextLayer(with: spaceName)
     }
     
     func space(with id: String?) -> [String: Any]? {
@@ -114,13 +139,19 @@ class ViewController: ICSVGViewController {
 extension ViewController: ICSVGViewControllerDelegate {
     func didTap(on layer: CALayer?, at scrollViewPoint: CGPoint, with svgElementID: String?) {
         
-        let parentSvgID = layer?.superlayer?.value(forKey: kSVGElementIdentifier) as? String
-        let spaceID = parentSvgID?.replacingOccurrences(of: "product-", with: "")
-        
-        
-        guard let space = space(with: spaceID) else {
+        guard let parentSvgID = layer?.superlayer?.svgElementID else {
             return
         }
+        
+        let spaceID = parentSvgID.replacingOccurrences(of: "product-", with: "")
+        
+        guard let space = space(with: spaceID),
+            let spaceName = space["RoomTag"] as? String,
+            let storyName = space["storyName"] as? String else {
+            return
+        }
+        
+        navigationItem.title = "\(storyName) - \(spaceName)"
         
         let detailVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
         detailVC?.preferredContentSize = CGSize(width: 320, height: 120)

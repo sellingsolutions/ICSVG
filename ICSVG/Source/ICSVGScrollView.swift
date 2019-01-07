@@ -12,12 +12,10 @@ import SVGKit
 class ICSVGScrollView: UIScrollView {
     
     // MARK: - PROPS
-    private var contentView: SVGKLayeredImageView!
+    var contentView: SVGKLayeredImageView!
     var caLayerTree: CALayer {
         return contentView.image.caLayerTree
     }
-    
-    private var tapRecognizer: UITapGestureRecognizer!
     
     weak var svgDelegate: ICSVGScrollViewDelegate?
     
@@ -26,6 +24,8 @@ class ICSVGScrollView: UIScrollView {
                                                           "sublayers": NSNull(),
                                                           "contents": NSNull(),
                                                           "bounds": NSNull()]
+    private var features = [String: Any]()
+    
     // MARK: - INITIALIZATION
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -38,9 +38,11 @@ class ICSVGScrollView: UIScrollView {
         
         setupScrollView(self, with: frame, using: contentView)
         
-        self.tapRecognizer = createTapGestureRecognizer()
+        let tapGesture = createTapGestureRecognizer()
+        let twoFingerGesture = createTwoFingerGestureRecognizer()
         
-        contentView.addGestureRecognizer(tapRecognizer)
+        contentView.addGestureRecognizer(tapGesture)
+        contentView.addGestureRecognizer(twoFingerGesture)
     }
     
     // MARK: - HIT DETECTION
@@ -55,9 +57,52 @@ class ICSVGScrollView: UIScrollView {
         svgDelegate?.didTap(on: tappedLayer, at: scrollViewPoint)
     }
 }
+// MARK: - SCROLL VIEW FEATURES
+extension ICSVGScrollView {
+    
+    // Rotates the root layer 'caLayerTree' by a given amount of radians
+    func rotate(_ radians: CGFloat) {
+        let transform = caLayerTree.transform
+        
+        let rotation = CATransform3DRotate(transform, radians, 0, 0, 1)
+        caLayerTree.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        caLayerTree.transform = rotation
+    }
+    
+    // Disabling the scrollView.panGestureRecognizer by setting canCancelContentTouches = false
+    var panGestureEnabled: Bool {
+        get {
+            return canCancelContentTouches
+        }
+        set {
+            canCancelContentTouches = newValue
+        }
+    }
+    
+    // When translation is enabled the user will be able to move the layer 'caLayerTree' by holding down 2 fingers and dragging
+    var translationEnabled: Bool {
+        get {
+            if let _translationEnabled = features["translationEnabled"] as? Bool {
+                return _translationEnabled
+            }
+            return false
+        }
+        set {
+            features["translationEnabled"] = newValue
+        }
+    }
+    
+    // Toggles translation mode on/off which in turn disables/enables the pan gesture recognizer
+    func toggleTranslation () {
+        translationEnabled = !translationEnabled
+        panGestureEnabled = !translationEnabled
+    }
+}
 // MARK: - SCROLL VIEW SETUP
 extension ICSVGScrollView {
-    private func setupScrollView(_ scrollView: UIScrollView, with frame: CGRect, using contentView: SVGKLayeredImageView) {
+    private func setupScrollView(_ scrollView: UIScrollView,
+                                 with frame: CGRect,
+                                 using contentView: SVGKLayeredImageView) {
         
         scrollView.addSubview(contentView)
         scrollView.contentSize = contentView.frame.size
@@ -66,7 +111,7 @@ extension ICSVGScrollView {
         let screenToDocumentSizeRatio = frame.size.width / contentView.frame.size.width
         
         scrollView.minimumZoomScale = min( 1, screenToDocumentSizeRatio )
-        scrollView.maximumZoomScale = max( 2, screenToDocumentSizeRatio )
+        scrollView.maximumZoomScale = max( 8, screenToDocumentSizeRatio )
     }
     
     private func createTapGestureRecognizer() -> UITapGestureRecognizer {
@@ -74,6 +119,25 @@ extension ICSVGScrollView {
         tapGesture.cancelsTouchesInView = false
         tapGesture.numberOfTapsRequired = 1
         return tapGesture
+    }
+    private func createTwoFingerGestureRecognizer() -> ICSVGTwoFingerGesture {
+        let gesture = ICSVGTwoFingerGesture(delegate: self, layer: caLayerTree)
+        return gesture
+    }
+}
+// MARK: - ICSVGTwoFingerGestureDelegate
+extension ICSVGScrollView: ICSVGTwoFingerGestureDelegate {
+    func translationDetected(translatedBy translation: CGPoint,
+                             previousPosition: CGPoint,
+                             currentPosition: CGPoint) {
+        
+        guard !translation.equalTo(CGPoint.zero) && translationEnabled else {
+            return
+        }
+        
+        let transform = caLayerTree.transform
+        caLayerTree.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        caLayerTree.transform = CATransform3DTranslate(transform, translation.x, translation.y, 1)
     }
 }
 // MARK: - SCROLL VIEW DELEGATE

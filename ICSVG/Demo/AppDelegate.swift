@@ -23,9 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let config = ICSVGViewControllerConfig(selectionStyle: .marchingAnts)
         
         let demoVC = ViewController(frame: screenBounds, filePath: filePath, config: config)
+        let demoNC = UINavigationController(rootViewController: demoVC)
         
         window = UIWindow(frame: screenBounds)
-        window?.rootViewController = demoVC
+        window?.rootViewController = demoNC
         window?.makeKeyAndVisible()
         
         return true

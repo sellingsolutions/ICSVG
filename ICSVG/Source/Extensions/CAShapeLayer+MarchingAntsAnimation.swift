@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 private let kLineDashPhase           = "lineDashPhase"
 private let kDashPattern: [NSNumber] = [8, 6]
 
@@ -29,6 +28,6 @@ extension CAShapeLayer {
         animation.duration = 1
         animation.repeatCount = .infinity
         
-        add(animation, forKey: "ICSVGMarchingAnts")
+        add(animation, forKey: "ICSVGMarchingAntsAnimation")
     }
 }

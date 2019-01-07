@@ -69,7 +69,7 @@ extension ICSVGViewController: ICSVGScrollViewDelegate {
     func didTap(on layer: CALayer?, at scrollViewPoint: CGPoint) {
         // Not all svg elements _have to_ have an ID
         // The backend should however only produce svg files where all elements have id's
-        let svgElementID = layer?.value(forKey: kSVGElementIdentifier) as? String
+        let svgElementID = layer?.svgElementID
         
         delegate?.didTap(on: layer, at: scrollViewPoint, with: svgElementID)
         

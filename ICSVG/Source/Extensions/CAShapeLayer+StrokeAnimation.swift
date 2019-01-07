@@ -19,6 +19,6 @@ extension CAShapeLayer {
         strokeAnimation.fillMode = .both
         strokeAnimation.isRemovedOnCompletion = false
         
-        add(strokeAnimation, forKey: nil)
+        add(strokeAnimation, forKey: "ICSVGStrokeAnimation")
     }
 }

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		19A5656ABEEFD9AA6A5D278B /* Pods_SVG_ICSVGTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606D157563D7D68DCEB8C544 /* Pods_SVG_ICSVGTests.framework */; };
 		5A9A5E3BDE0533F2E23D8238 /* Pods_SVG_ICSVGUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6B45051483BC84EB95F7D1B /* Pods_SVG_ICSVGUITests.framework */; };
+		800BFE6F21E10DCB007DDADD /* CAShapeLayer+TextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BFE6E21E10DCB007DDADD /* CAShapeLayer+TextLayer.swift */; };
+		800BFE7121E16163007DDADD /* ICSVGTwoFingerGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BFE7021E16163007DDADD /* ICSVGTwoFingerGesture.swift */; };
+		800BFE7321E179AD007DDADD /* ICSVGTwoFingerGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BFE7221E179AD007DDADD /* ICSVGTwoFingerGestureDelegate.swift */; };
+		800BFE7521E2C18F007DDADD /* CAShapeLayer+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BFE7421E2C18F007DDADD /* CAShapeLayer+Rotation.swift */; };
 		802A269C21CBE28200C81652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A269B21CBE28200C81652 /* AppDelegate.swift */; };
 		802A26A121CBE28200C81652 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802A269F21CBE28200C81652 /* Main.storyboard */; };
 		802A26A321CBE28300C81652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 802A26A221CBE28300C81652 /* Assets.xcassets */; };
@@ -29,6 +33,9 @@
 		80BFA0DF21D6E3AF00931D2B /* CAShapeLayer+StrokeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0DD21D6E3AF00931D2B /* CAShapeLayer+StrokeAnimation.swift */; };
 		80BFA0E321D6E40A00931D2B /* ICSVGViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0E121D6E40A00931D2B /* ICSVGViewControllerDelegate.swift */; };
 		80BFA0E421D6E40A00931D2B /* ICSVGScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0E221D6E40A00931D2B /* ICSVGScrollViewDelegate.swift */; };
+		80BFA0E621D7ED9B00931D2B /* CALayer+SVGElementID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0E521D7ED9B00931D2B /* CALayer+SVGElementID.swift */; };
+		80BFA0E821D9EAC200931D2B /* CGPath+Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFA0E721D9EAC200931D2B /* CGPath+Points.swift */; };
+		80CA3CD021E0856800B7B895 /* CAShapeLayer+PathWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA3CCF21E0856800B7B895 /* CAShapeLayer+PathWidth.swift */; };
 		80D34BFB21CCEDCD00FC7E6D /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D34BFA21CCEDCD00FC7E6D /* CoreText.framework */; };
 		80D34BFD21CCEDD300FC7E6D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D34BFC21CCEDD300FC7E6D /* CoreImage.framework */; };
 		80D34BFF21CCEDE900FC7E6D /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D34BFE21CCEDE900FC7E6D /* libxml2.tbd */; };
@@ -61,6 +68,10 @@
 		51BB0806FA322B676A028A01 /* Pods-SVG-ICSVGTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVG-ICSVGTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SVG-ICSVGTests/Pods-SVG-ICSVGTests.release.xcconfig"; sourceTree = "<group>"; };
 		606D157563D7D68DCEB8C544 /* Pods_SVG_ICSVGTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SVG_ICSVGTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607026EEE16B4E23F6207769 /* Pods-SVG-ICSVGTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVG-ICSVGTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SVG-ICSVGTests/Pods-SVG-ICSVGTests.debug.xcconfig"; sourceTree = "<group>"; };
+		800BFE6E21E10DCB007DDADD /* CAShapeLayer+TextLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAShapeLayer+TextLayer.swift"; sourceTree = "<group>"; };
+		800BFE7021E16163007DDADD /* ICSVGTwoFingerGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSVGTwoFingerGesture.swift; sourceTree = "<group>"; };
+		800BFE7221E179AD007DDADD /* ICSVGTwoFingerGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSVGTwoFingerGestureDelegate.swift; sourceTree = "<group>"; };
+		800BFE7421E2C18F007DDADD /* CAShapeLayer+Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAShapeLayer+Rotation.swift"; sourceTree = "<group>"; };
 		802A269821CBE28200C81652 /* ICSVG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ICSVG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		802A269B21CBE28200C81652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		802A26A021CBE28200C81652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,6 +99,9 @@
 		80BFA0DD21D6E3AF00931D2B /* CAShapeLayer+StrokeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAShapeLayer+StrokeAnimation.swift"; sourceTree = "<group>"; };
 		80BFA0E121D6E40A00931D2B /* ICSVGViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICSVGViewControllerDelegate.swift; sourceTree = "<group>"; };
 		80BFA0E221D6E40A00931D2B /* ICSVGScrollViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICSVGScrollViewDelegate.swift; sourceTree = "<group>"; };
+		80BFA0E521D7ED9B00931D2B /* CALayer+SVGElementID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+SVGElementID.swift"; sourceTree = "<group>"; };
+		80BFA0E721D9EAC200931D2B /* CGPath+Points.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPath+Points.swift"; sourceTree = "<group>"; };
+		80CA3CCF21E0856800B7B895 /* CAShapeLayer+PathWidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAShapeLayer+PathWidth.swift"; sourceTree = "<group>"; };
 		80D34BFA21CCEDCD00FC7E6D /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		80D34BFC21CCEDD300FC7E6D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		80D34BFE21CCEDE900FC7E6D /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
@@ -195,6 +209,7 @@
 				80BFA0CE21D132FE00931D2B /* ICSVGDocument.swift */,
 				80BFA0D221D6C78100931D2B /* ICSVGLayerSelectionStyle.swift */,
 				80BFA0D421D6C81200931D2B /* ICSVGViewControllerConfig.swift */,
+				800BFE7021E16163007DDADD /* ICSVGTwoFingerGesture.swift */,
 				80BFA0E021D6E40A00931D2B /* Delegates */,
 				80BFA0DB21D6E3AF00931D2B /* Extensions */,
 			);
@@ -221,6 +236,11 @@
 			children = (
 				80BFA0DC21D6E3AF00931D2B /* CAShapeLayer+MarchingAntsAnimation.swift */,
 				80BFA0DD21D6E3AF00931D2B /* CAShapeLayer+StrokeAnimation.swift */,
+				80CA3CCF21E0856800B7B895 /* CAShapeLayer+PathWidth.swift */,
+				800BFE6E21E10DCB007DDADD /* CAShapeLayer+TextLayer.swift */,
+				80BFA0E521D7ED9B00931D2B /* CALayer+SVGElementID.swift */,
+				80BFA0E721D9EAC200931D2B /* CGPath+Points.swift */,
+				800BFE7421E2C18F007DDADD /* CAShapeLayer+Rotation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -230,6 +250,7 @@
 			children = (
 				80BFA0E121D6E40A00931D2B /* ICSVGViewControllerDelegate.swift */,
 				80BFA0E221D6E40A00931D2B /* ICSVGScrollViewDelegate.swift */,
+				800BFE7221E179AD007DDADD /* ICSVGTwoFingerGestureDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -530,18 +551,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80BFA0E621D7ED9B00931D2B /* CALayer+SVGElementID.swift in Sources */,
+				80CA3CD021E0856800B7B895 /* CAShapeLayer+PathWidth.swift in Sources */,
 				80BFA0C421D0447A00931D2B /* ViewController.swift in Sources */,
 				80BFA0DE21D6E3AF00931D2B /* CAShapeLayer+MarchingAntsAnimation.swift in Sources */,
 				80BFA0CF21D132FE00931D2B /* ICSVGDocument.swift in Sources */,
+				800BFE7321E179AD007DDADD /* ICSVGTwoFingerGestureDelegate.swift in Sources */,
 				80BFA0D321D6C78100931D2B /* ICSVGLayerSelectionStyle.swift in Sources */,
 				80BFA0D521D6C81200931D2B /* ICSVGViewControllerConfig.swift in Sources */,
+				800BFE7121E16163007DDADD /* ICSVGTwoFingerGesture.swift in Sources */,
 				80BFA0DF21D6E3AF00931D2B /* CAShapeLayer+StrokeAnimation.swift in Sources */,
 				80BFA0B521CFE6CA00931D2B /* ICSVGTextLayer.swift in Sources */,
 				80BFA0E321D6E40A00931D2B /* ICSVGViewControllerDelegate.swift in Sources */,
 				80BFA0B921D0060E00931D2B /* ICSVGScrollView.swift in Sources */,
 				802A269C21CBE28200C81652 /* AppDelegate.swift in Sources */,
 				80BFA0C521D0447A00931D2B /* DetailViewController.swift in Sources */,
+				800BFE7521E2C18F007DDADD /* CAShapeLayer+Rotation.swift in Sources */,
+				80BFA0E821D9EAC200931D2B /* CGPath+Points.swift in Sources */,
 				80BFA0CD21D1306E00931D2B /* ICSVGViewController.swift in Sources */,
+				800BFE6F21E10DCB007DDADD /* CAShapeLayer+TextLayer.swift in Sources */,
 				80BFA0E421D6E40A00931D2B /* ICSVGScrollViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
