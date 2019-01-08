@@ -10,3 +10,8 @@
 
 ### Peripheral Goals
 - Link ifcSpaces to apartments via created issues
+
+
+### Demo
+[![ICSVG - Rotate, Translate and Annotate](https://share.gifyoutube.com/KzB6Gb.gif)](https://www.youtube.com/watch?v=ek1j272iAmc)
+
