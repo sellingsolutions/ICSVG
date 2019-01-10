@@ -13,5 +13,5 @@
 
 
 ### Demo
-[![ICSVG - Rotate, Translate and Annotate](https://github.com/sellingsolutions/ICSVG/blob/master/icsvg.gif)](https://www.youtube.com/watch?v=ek1j272iAmc)
+[![ICSVG - Rotate, Translate and Annotate](https://github.com/sellingsolutions/ICSVG/blob/master/icsvg.gif)](https://github.com/sellingsolutions/ICSVG/blob/master/icsvg.gif)
 
